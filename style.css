@@ -1,0 +1,329 @@
+
+/** Pagina indeling **/
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    font-family: Verdana, Arial, sans-serif;
+}
+
+header {
+    flex: 0 0 10%;
+    min-height: 80px;
+}
+
+footer {
+    flex: 0 0 5%;
+    min-height: 30px;
+}
+
+header, footer {
+    display: flex;
+    background-color: cornflowerblue;
+    color: white;
+}
+
+header h1, footer h3 {
+    flex: 1 1 100%;
+    align-self: center;
+    text-align: center;
+    margin: 0;
+}
+
+footer h3 {
+    font-size: 80%;
+}
+
+article {
+    flex: 1 1 auto;
+    background-color: antiquewhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#omschrijving {
+    text-align: center;
+}
+
+#speelveld {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+}
+#resultaat {
+    width: 100%;
+    height: 100%;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    font-size:3em;
+    text-align: center;
+    vertical-align: center;
+}
+
+#galgje-figuur {
+    flex: 0 0 50%;
+    position: relative;
+    border-bottom: 1px solid #aaa;
+}
+
+#galgje-figuur > * {
+    display: none;
+    position: absolute;
+    background-color: black;
+}
+
+
+@media (min-width: 600px) and (min-height: 400px) {
+    #speelveld {
+        flex-direction: row;
+    }
+
+    #galgje-figuur {
+        border-right: 1px solid #aaa;
+        border-bottom: 0;
+    }
+
+    #resultaat {
+        font-size:5em;
+
+    }
+
+}
+@media (min-width: 1400px) and (min-height: 900px) {
+    #speelveld {
+        width: 80%;
+        height: 50%;
+        flex-direction: row;
+    }
+    #resultaat {
+        width: 80%;
+        height: 50%;
+    }
+
+    footer h3 {
+        font-size: initial;
+    }
+}
+/** Figuur */
+
+#g-onderste-lijn {
+    width: calc(100% - 30px);
+    height: 3px;
+    bottom: 15px;
+    left: 15px;
+}
+
+#g-paal {
+    width: 3px;
+    height: calc(100% - 30px);
+    bottom: 15px;
+    left: 15px;
+}
+
+#g-balk {
+    width: calc(45%);
+    height: 3px;
+    left: 15px;
+    top: 15px;
+}
+
+#g-touw {
+    left: calc(15px + 45%);
+    width: 3px;
+    height: calc(10%);
+    top: 15px;
+}
+
+:root {
+    --galgje-hoofd: calc(max(50px, min(5vw, 70px)));
+    --galgje-midden: calc(15px + 45% - (var(--galgje-hoofd) / 2) + 1px);
+}
+
+#g-hoofd {
+    left: var(--galgje-midden);
+    top: calc(15px + 10%);
+    width: var(--galgje-hoofd);
+    height: var(--galgje-hoofd);
+    background-color: transparent;
+}
+
+#g-buik {
+    left: calc(15px + 45%);
+    width: 3px;
+    height: calc(20%);
+    top: calc(15px + 10% + var(--galgje-hoofd));
+}
+
+#g-linker-arm {
+    left: calc(var(--galgje-midden));
+    width: 3px;
+    height: calc(20%);
+    top: calc(15px + 10% + var(--galgje-hoofd));
+    transform: rotate(45deg);
+}
+
+#g-rechter-arm {
+    left: calc(var(--galgje-midden) + (var(--galgje-hoofd)));
+    width: 3px;
+    height: calc(20%);
+    top: calc(15px + 10% + var(--galgje-hoofd));
+    transform: rotate(-45deg);
+}
+
+#g-linker-been {
+    left: calc(var(--galgje-midden));
+    width: 3px;
+    height: calc(20%);
+    top: calc(15px + 10% + var(--galgje-hoofd) + 18%);
+    transform: rotate(45deg);
+}
+
+#g-rechter-been {
+    left: calc(var(--galgje-midden) + (var(--galgje-hoofd)));
+    width: 3px;
+    height: calc(20%);
+    top: calc(15px + 10% + var(--galgje-hoofd) + 18%);
+    transform: rotate(-45deg);
+}
+
+
+svg {
+    stroke: black;
+    fill: none;
+}
+
+@media (max-width: 599px) {
+    :root {
+        --galgje-hoofd: 10vw;
+    }
+
+}
+
+@media (max-width: 1500px) and (min-height: 600px) {
+    #galgje-figuur{
+        max-height: 400px;
+        margin-top:10%;
+    }
+}
+@media (max-width: 600px) and (min-height: 600px) {
+    #galgje-figuur{
+        max-height: 300px;
+    }
+}
+
+/** Woord */
+#woord {
+    flex: 0 0 20%;
+    display: flex;
+    justify-content: center;
+}
+
+#woord .letter {
+    flex: 0 0 auto;
+    font-size: 1em;
+    width: 0.75em;
+    vertical-align: middle;
+    line-height: 1em;
+    border-bottom: 1px solid black;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    text-align: center;
+    height: 2em;
+    padding-top:10px;
+    text-transform: uppercase;
+}
+
+@media (min-width: 1000px) {
+    #woord .letter {
+        font-size: 1.5em;
+    }
+}
+
+@media (min-width: 1500px){
+    #woord .letter {
+        font-size: 2em;
+        width: 1em;
+        line-height: 1em;
+    }
+}
+
+/** Invoer */
+#invoer {
+    flex: 0 0 50%;
+    flex-direction: column;
+    display: flex;
+}
+
+#invoer-letters {
+    flex: 1 0 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+
+}
+#invoer-letters button{
+    flex: 1 0 14%;
+    max-width:14%;
+    font-size: 1em;
+    padding: 0;
+    margin: 0.2em;
+    height:calc(80% / 5);
+}
+
+#invoer-letters button.goed{
+    background-color: darkseagreen;
+}
+#invoer-letters button.fout{
+    background-color: orangered;
+}
+
+@media (min-width: 900px) and (min-height: 700px) {
+    #invoer-letters button {
+        font-size: 2em;
+    }
+}
+
+/** Einde **/
+#speelveld, #omschrijving {
+    transition-duration: 4s;
+    transition-property: transform, opacity;
+}
+
+#speelveld.einde {
+    transform: rotate(360deg) scale(0.0);
+    opacity: 0;
+}
+
+#omschrijving.einde {
+    transform: rotate(-360deg) scale(0.0);
+    opacity: 0;
+}
+
+#resultaat {
+    opacity: 0;
+    transform: rotate(360deg) scale(0.0);
+    height: 0;
+}
+
+#resultaat.einde {
+    transition-property: transform, opacity, height;
+    transition-duration: 2s;
+    transform: rotate(0deg) scale(1.0) !important;
+    opacity: 1 !important;
+    height: 50%;
+}
