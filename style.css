@@ -29,8 +29,13 @@ footer {
 
 header, footer {
     display: flex;
+
+    /** --- Opdracht 7 --- **/
+
     background-color: cornflowerblue;
     color: white;
+
+    /** --- Opdracht 7 --- **/
 }
 
 header h1, footer h3 {
@@ -84,7 +89,12 @@ article {
 #galgje-figuur > * {
     display: none;
     position: absolute;
+
+    /** --- Opdracht 8 --- **/
+
     background-color: black;
+
+    /** --- Opdracht 8 --- **/
 }
 
 
