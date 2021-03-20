@@ -30,7 +30,7 @@ Is je al opgevallen dat er knoppen staan voor de letters `A`, `B` en `C`? Waar i
 
 ![](images/1.png)
 
-▶▶▶ Ga naar regel 79 aan de linker kant. Er staat 'Opdracht 1'.
+▶▶▶ Kijk aan de linker kant in `galgje.js`. Er staat 'Opdracht 1' in het midden.
 
 Daar staat een lijstje van mogelijke letters. Alleen `A`, `B` en `C` staan erin.
 
@@ -56,7 +56,7 @@ Er gebeurt nog steeds niet zoveel. De letter wordt ook rood.
 
 Geen enkele letter wordt groen als hij goed is. Laten we dat gaan maken.
 
-▶▶▶ Ga naar regel 109 in `index.html` aan de linker kant. Er staat 'Opdracht 2'.
+▶▶▶ Ga naar in `galgje.js` aan de linker kant. Er staat 'Opdracht 2'.
 
 ▶▶▶ Verander `const letterIsGoed = false;` naar `const letterIsGoed = letterGekozen(letter);`.
 
@@ -68,7 +68,7 @@ Nu gebeurt er iets! Voor goede letters verschijnen ze in het woord. Voor foute l
 
 ### Opdracht 3: Letters laten controleren
 
-▶▶▶ Ga naar regel 116 in `index.html` aan de linker kant. Er staat 'Opdracht 3'.
+▶▶▶ Kijk in `galgje.js` aan de linker kant. Er staat 'Opdracht 3'.
 
 In dit stukje code staat `if`. Dat betekent dat als de letter goed is, de code op regel 117 wordt uitgevoerd, en als de letter fout is de code op regel 119 wordt uitgevoerd.
 
@@ -82,7 +82,7 @@ Op beide regels wordt `'fout'` gezet, waardoor de knop rood wordt!
 
 ### Opdracht 4: Meer woorden
 
-▶▶▶ Ga naar regel 59 aan de linker kant. Er staat 'Opdracht 4'.
+▶▶▶ Kijk in `galgje.js` aan de linker kant. Er staat 'Opdracht 4'.
 
 Tot nu toe wordt er een lijstje gebruikt van twee mogelijke woorden. Dat is saai. Gelukkig kunnen we met code extra woorden erbij maken!
 
@@ -106,7 +106,7 @@ Vanaf dit moment moet je een werkend spel hebben. Goed gedaan!
 
 Laten we vals spelen. Jij kan de code aanpassen zodat je altijd wint, welke letter je ook kiest.
 
-▶▶▶ Ga naar regel 127 in `index.html`. Voeg de regel `gewonnen();` toe. Na elke ingevoerde letter heb je nu gewonnen!
+▶▶▶ Kijk in `galgje.js` aan de linker kant. Er staat 'Opdracht 5'. Voeg de regel `gewonnen();` toe. Na elke ingevoerde letter heb je nu gewonnen!
 
 ![](images/10.png)
 
@@ -126,7 +126,7 @@ Dat is mooi! Maar het spelletje is wel een beetje saai geworden zo.
 
 Als je een foute letter invoert, dan komen een voor een de onderdelen van de galg tevoorschijn. Laten we de volgorde aanpassen.
 
-▶▶▶ Ga naar regel 134 in `index.html`. Daar staat een lijstje `figuurOnderdelen` met onderdelen van de galg.
+▶▶▶ Kijk in `galgje.js` aan de linker kant. Er staat 'Opdracht 6'. Daar staat een lijstje `figuurOnderdelen` met onderdelen van de galg.
 
 Kan je ontdekken welke namen in het lijstje bij welke onderdelen horen?
 
@@ -140,7 +140,7 @@ Je mag zelf kiezen of de je volgorde zo laat, of dat je de volgorde weer terugze
 
 ### Opdracht 7: Kleuren aanpassen
 
-Tot nu toe zijn we bezig geweest in het bestand `index.html` aan de linker kant. Er zijn meer bestanden die we kunnen aanpassen.
+Tot nu toe zijn we bezig geweest in het bestand `galgje.js` aan de linker kant. Er zijn meer bestanden die we kunnen aanpassen.
 
 ▶▶▶ Open aan de linkerkant het bestand `style.css`.
 
@@ -148,7 +148,7 @@ Het bestand `style.css` bevat stijlen. Die bepalen hoe het spel eruit ziet.
 
 Wij gaan de kleuren van de onderdelen van het spel aanpassen.
 
-▶▶▶ Ga naar regel 35 in `style.css`. Pas de regel waar `background-color: cornflowerblue;` staat aan naar een andere kleur achter de `:`, bijvoorbeeld `red` (rood), `green` (groen), `yellow` (geel), `black` (zwart), `white` (wit) of `purple` (paars).
+▶▶▶ Ga naar 'Opdracht 7' in `style.css`. Pas de regel waar `background-color: cornflowerblue;` staat aan naar een andere kleur achter de `:`, bijvoorbeeld `red` (rood), `green` (groen), `yellow` (geel), `black` (zwart), `white` (wit) of `purple` (paars).
 
 Je moet nu aan de rechterkant de kleur van de balk boven en onder het spel zien veranderen.
 
@@ -160,7 +160,7 @@ Je moet nu aan de rechterkant de kleur van de balk boven en onder het spel zien 
 
 We kunnen nog meer kleuren aanpassen.
 
-▶▶▶ Ga naar regel 95 in `style.css`. Pas de regel waar `background-color: red;` staat aan naar een andere kleur achter de `:`. Je kan uit de zelfde kleuren kiezen als de vorige opdracht.
+▶▶▶ Ga naar 'Opdracht 8' in `style.css`. Pas de regel waar `background-color: red;` staat aan naar een andere kleur achter de `:`. Je kan uit de zelfde kleuren kiezen als de vorige opdracht.
 
 Raad een aantal foute letters. Je ziet nu dat de galg een andere kleur heeft.
 
@@ -170,7 +170,7 @@ Raad een aantal foute letters. Je ziet nu dat de galg een andere kleur heeft.
 
 Laten we het figuur ogen en een mond geven.
 
-▶▶▶ Ga naar regel 25 in `index.html`.
+▶▶▶ Ga naar 'Opdracht 9' in `index.html`.
 
 Je ziet hier `<circle>...</circle>` staan. Het woord `circle` maakt een cirkel. Er staat `cx` en `cy` in, dat zijn de *coordinaten* van het centrum (centrum X en centrum Y). Er staat ook nog een `r` in, dat is de *radius*, hoe groot de cirkel is.
 
