@@ -1,157 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Galgje</title>
-	<meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86">
-	<link href="style.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Galgje</title>
+  <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86">
+  <link href="style.css" rel="stylesheet">
 </head>
+
 <body>
-<header><h1>Galgje</h1></header>
-<article>
-	<button id="opnieuw" onclick="window.location.reload()">Opnieuw</button>
-	<h1 id="omschrijving">Omschrijving van het woord</h1>
-	<div id="speelveld">
-		<div id="galgje-figuur">
-			<div id="g-hoofd">
-				<svg width="100%" height="100%" viewBox="-4 -4 108 108">
-					<circle cx="50" cy="50" r="50" stroke-width="8"/>
-				</svg>
-			</div>
-			<div id="g-rechter-been"></div>
-			<div id="g-linker-been"></div>
-			<div id="g-rechter-arm"></div>
-			<div id="g-linker-arm"></div>
-			<div id="g-buik"></div>
-			<div id="g-touw"></div>
-			<div id="g-balk"></div>
-			<div id="g-paal"></div>
-			<div id="g-onderste-lijn"></div>
-		</div>
-		<div id="invoer">
-			<div id="woord"></div>
-			<div id="invoer-letters"></div>
-		</div>
-	</div>
-	<div id="resultaat">
-		WOEHOO
-	</div>
-</article>
-<footer><h3>Coderdojo Enschede - Online Dojo - 3 april 2021</h3></footer>
-<script type="module">
-    import {maakBinnenEnGeefTerug, maakLeeg, pak, veranderText} from "./bibiliotheek.js";
-
-    let resultaat = pak('resultaat');
-
-    const alleWoorden = [
-        {woord: "programmeren", omschrijving: "Wat doen we bij de Coderdojo?"},
-        {woord: "bibliotheek", omschrijving: "Waar houden we de Coderdojo?"},
-    ];
-
-    const huidigWoord = alleWoorden[Math.round(Math.random() * (alleWoorden.length - 1))];
-
-    veranderText('omschrijving', huidigWoord.omschrijving);
-    maakLeeg('woord');
-    for (let i = 0; i < huidigWoord.woord.length; i++) {
-        const letter = maakBinnenEnGeefTerug('woord', 'div', 'letter');
-        letter.setAttribute('data-letter', huidigWoord.woord.charAt(i));
-    }
-
-    const invoerLetterEventSoorten = ['click', 'touchstart'];
-
-    const mogelijkeLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-    for (let i = 0; i < mogelijkeLetters.length; i++) {
-        let invoerLetter = maakBinnenEnGeefTerug('invoer-letters', 'button', 'invoer-letter');
-        const mogelijkeLetter = mogelijkeLetters[i];
-        invoerLetter.setAttribute('data-letter', mogelijkeLetter);
-        invoerLetter.setAttribute('draggable', false);
-        veranderText(invoerLetter, mogelijkeLetter);
-        luisterNaarInvoer(invoerLetter);
-    }
-
-    function luisterNaarInvoer(element) {
-        invoerLetterEventSoorten.forEach(invoerLetterEventSoort => element.addEventListener(invoerLetterEventSoort, verwerkInvoerClick));
-    }
-
-    function stopMetLuisterenNaarInvoer(element) {
-        invoerLetterEventSoorten.forEach(invoerLetterEventSoort => element.removeEventListener(invoerLetterEventSoort, verwerkInvoerClick));
-    }
-
-
-    function verwerkInvoerClick(ev) {
-        ev.preventDefault();
-        this.setAttribute('disabled', 'disabled');
-        stopMetLuisterenNaarInvoer(this);
-        if (letterGekozen(this.getAttribute('data-letter'))) {
-            this.classList.add('goed');
-        } else {
-            this.classList.add('fout');
-        }
-    }
-
-    let figuurOnderdelen = ['g-onderste-lijn', 'g-paal', 'g-balk', 'g-touw', 'g-hoofd', 'g-buik', 'g-linker-arm', 'g-rechter-arm', 'g-linker-been', 'g-rechter-been'];
-    let aantalFout = 0;
-
-    /**
-     *
-     * @param {string} gekozenLetter
-     */
-    function letterGekozen(gekozenLetter) {
-        let woordElement = pak('woord');
-        let aantalGevonden = 0;
-        let aantalGoed = 0;
-        for (let i = 0; i < woordElement.children.length; i++) {
-            const letterElementInWoord = woordElement.children.item(i);
-            let letterInWoord = letterElementInWoord.getAttribute('data-letter').toLowerCase();
-            if (letterInWoord === gekozenLetter.toLowerCase()) {
-                veranderText(letterElementInWoord, gekozenLetter);
-                aantalGevonden++;
-            }
-            if (letterInWoord === letterElementInWoord.innerText.toLowerCase()) {
-                aantalGoed++;
-            }
-        }
-        if (aantalGevonden === 0) {
-            if (aantalFout < figuurOnderdelen.length) {
-                pak(figuurOnderdelen[aantalFout]).style.display = 'block';
-                aantalFout++;
-            }
-            if (aantalFout >= figuurOnderdelen.length) {
-                verloren();
-            }
-        } else if (aantalGoed === woordElement.children.length) {
-            gewonnen();
-        }
-        return aantalGevonden > 0;
-    }
-
-    function verloren() {
-        einde('Helaas, verloren!', '#ffaa33');
-    }
-
-    function gewonnen() {
-        einde('Jaaa, gewonnen!!!', '#55cc33');
-    }
-
-    function einde(tekst, kleur) {
-        const alleInvoerLetters = pak('invoer-letters');
-        for (let i = 0; i < alleInvoerLetters.children.length; i++) {
-            let invoerLetter = alleInvoerLetters.children.item(i);
-            invoerLetter.setAttribute('disabled', 'disabled');
-            stopMetLuisterenNaarInvoer(invoerLetter);
-        }
-        pak('omschrijving').classList.add('einde');
-        pak('speelveld').classList.add('einde');
-        veranderText('resultaat', tekst);
-        window.setTimeout(() => {
-            pak('speelveld').style.display = 'none';
-            pak('omschrijving').style.display = 'none';
-            let resultaat = pak('resultaat');
-            resultaat.classList.add('einde');
-            resultaat.style.color = kleur;
-        }, 2000);
-    }
-
-</script>
+  <header>
+    <h1>Galgje</h1>
+  </header>
+  <article>
+    <button id="opnieuw" onclick="window.location.reload()">Opnieuw</button>
+    <h1 id="omschrijving">Omschrijving van het woord</h1>
+    <div id="speelveld">
+      <div id="galgje-figuur">
+        <div id="g-hoofd">
+          <svg width="100%" height="100%" viewBox="-4 -4 108 108">
+            <circle cx="50" cy="50" r="50" stroke-width="8" />
+          </svg>
+        </div>
+        <div id="g-rechter-been"></div>
+        <div id="g-linker-been"></div>
+        <div id="g-rechter-arm"></div>
+        <div id="g-linker-arm"></div>
+        <div id="g-buik"></div>
+        <div id="g-touw"></div>
+        <div id="g-balk"></div>
+        <div id="g-paal"></div>
+        <div id="g-onderste-lijn"></div>
+      </div>
+      <div id="invoer">
+        <div id="woord"></div>
+        <div id="invoer-letters"></div>
+      </div>
+    </div>
+    <div id="resultaat">
+      WOEHOO
+    </div>
+  </article>
+  <footer>
+    <h3>Coderdojo Enschede - Online Dojo - 3 april 2021</h3>
+  </footer>
+  <script type="module" src="galgje.js"></script>
 </body>
 </html>
