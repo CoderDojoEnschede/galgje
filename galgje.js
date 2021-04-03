@@ -7,7 +7,7 @@ const alleWoorden = [
     {woord: "bibliotheek", omschrijving: "Waar houden we de Coderdojo?"},
 ];
 
-const huidigWoord = alleWoorden[Math.round(Math.random() * (alleWoorden.length - 1))];
+const huidigWoord = alleWoorden[Math.floor(Math.random() * alleWoorden.length)];
 
 veranderText('omschrijving', huidigWoord.omschrijving);
 maakLeeg('woord');
