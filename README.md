@@ -25,5 +25,4 @@ Werkend spel:
 - Geavanceerd: animatie veranderen (invouwen, uit beeld laten verdwijnen)
 
 ### Code
-- Random is niet goed verdeeld als er meer woorden worden toegevoegd, `round` maakt kans op 0 en laatste index kleiner dan de andere indices.
 - Het hoofd kan waarschijnlijk met 100% `border-radius` CSS, zodat er geen SVG nodig is.
